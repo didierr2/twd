@@ -1,0 +1,93 @@
+1;Coups critiques;0,22;5;5;B;;
+2;Sante;0,22;5;3;B;Gabriel;0,06
+3;Degats Critiques;0,2;5;1;B;Carl;0,05
+4;Degats;0,16;5;4;E;Soldat;0,04
+5;Degats Critiques;718;5;6;E;Rufus;180
+6;Degats;0,18;5;2;E;;
+7;Coups Critiques;0,21;5;3;D;;
+8;Degats;555;5;3;C;Gouverneur;139
+9;Degats;555;5;1;C;Maggie;139
+10;Degats;0,16;5;6;E;Soldat;0,04
+11;Sante;985;5;6;A;Guerrier;246
+12;Degats;534;5;5;B;Cogneur;134
+13;Degats critiques;654;5;3;C;Gabriel;164
+14;Reduction degats;0,17;5;3;A;Guerrier;0,04
+15;Reduction degats;0,19;5;2;E;;
+16;Reduction degats;0,19;5;1;B;;
+17;Sante;0,2;5;1;C;;
+18;Degats;0,17;5;6;E;Abraham;0,04
+19;Degats;0,17;5;3;C;Guerrier;0,04
+20;Sante;0,16;4;1;D;Rufus;0,04
+21;Sante;0,18;4;5;E;;
+22;Sante;0,16;4;6;C;Chasseur;0,04
+23;Degats;0,14;4;3;D;;
+24;Degats Critiques;601;4;2;A;;
+25;Degats;0,14;4;5;A;;
+26;Reduction degats;0,13;4;5;C;Guerrier;0,03
+27;Reduction degats;0,13;4;3;D;Chasseur;0,03
+28;Reduction degats;0,13;4;5;B;Eclaireur;0,03
+29;Degats;411;4;4;A;Negan;103
+30;Sante;0,16;4;1;E;;
+31;Sante;0,15;4;3;A;Merle;0,04
+32;Sante;658;4;1;D;Tireur;164
+33;Degats;0,12;4;4;B;Soldat;0,03
+34;Sante;636;4;6;D;Guerrier;159
+35;Sante;0,14;4;4;A;Guerrier;0,04
+36;Degats Critiques;0,15;4;4;C;Soldat;0,04
+37;Coups Critiques;0,11;4;6;C;Impitoyable;0,03
+38;Coups Critiques;0,14;4;1;B;Tireur;0,04
+39;Degats Critiques;0,17;4;3;B;Soldat;0,04
+40;Sante;0,15;4;3;D;Brutalite;0,04
+41;Degats Critiques;0,16;4;1;D;Guerrier;0,04
+42;Coups Critiques;0,12;4;5;E;Eclaireur;0,03
+43;Coups Critiques;0,12;4;3;B;Tireur;0,03
+44;Reduction degats;0,12;4;3;A;Chasseur;0,03
+45;Sante;0,14;4;1;B;Rufus;0,04
+46;Degats Critiques;0,16;4;3;D;;
+47;Degats;348;4;5;E;;
+48;Degats;0,1;3;4;A;chasseur;0,02
+49;Degats;0,09;3;1;D;guerrier;0,02
+50;Sante;0,12;3;2;D;;
+51;Degats Critiques;0,13;3;2;E;;
+52;Degats Critiques;0,12;3;6;E;Soldat;0,03
+53;Degats Critiques;0,12;3;4;D;soldat;0,03
+54;Degats;224;3;4;C;;
+55;Sante;396;3;2;B;eclaireur;99
+56;Sante;500;3;4;C;impitoyable;125
+57;Sante;498;3;2;D;eclaireur;124
+58;Degats Critiques;0,13;3;6;B;guerrier;0,03
+59;Degats Critiques;398;3;4;B;soldat;100
+60;Degats;0,1;3;3;D;chasseur;0,02
+61;Degats Critiques;0,13;3;2;E;cogneur;0,03
+62;Degats Critiques;0,13;3;5;C;rick;0,03
+63;Degats;239;3;5;C;soldat;60
+64;Degats;238;3;3;E;tara;60
+65;Degats Critiques;0,14;3;4;C;;
+66;Degats Critiques;0,13;3;2;D;tara;0,03
+67;Degats;0,11;3;3;D;;
+68;Reduction degats;0,09;3;4;E;frappe puissante;0,02
+69;Degats Critiques;362;3;1;A;carl;90
+70;Sante;438;3;1;D;vigilant;110
+71;Coups Critiques;0,09;3;6;B;frappe puissante;0,02
+72;Sante;477;3;5;D;;
+73;Reduction degats;0,09;3;5;B;brutalite;0,02
+74;Degats Critiques;0,13;3;2;D;;
+75;Sante;413;3;4;B;frappe puissante;103
+76;Coups Critiques;0,09;3;3;B;eclaireur;0,02
+77;Degats;0,08;3;3;D;Gouverneur;0,02
+78;Degats;0,08;3;5;E;ezekiel;0,02
+79;Degats Critiques;0,11;3;2;D;esquive;0,03
+80;Degats Critiques;0,05;1;2;C;chasseur;0,01
+81;Coups Critiques;0,03;1;5;D;;
+82;Sante;300;2;6;E;cogneur;75
+83;Degats;149;2;2;C;;
+84;Degats;0,06;2;5;C;tireur;0,02
+85;Sante;0,24;5;2;B;;
+86;Degats;212;3;5;C;glenn;53
+87;Degats Critiques;0,15;4;6;C;guerrier;0,04
+88;Degats;0,17;5;4;D;Chasseur;0,04
+89;Degats;0,18;5;6;C;;
+90;Degats Critiques;0,17;4;2;A;gabriel;0,04
+91;Sante;0,14;4;1;E;carl;0,04
+92;Sante;0,16;4;5;C;;
+
