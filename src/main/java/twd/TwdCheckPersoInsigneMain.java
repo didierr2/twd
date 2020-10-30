@@ -12,9 +12,14 @@ import static twd.Constants.specialites;
 import static twd.Constants.insignesEffet;
 import static twd.Constants.insignesSet;
 
+/**
+ * Classe de vérification des données en entrée : 
+ * - vérifie la liste des insignes (doublons, extra existant, set existant, effet existant)
+ * - vérifie la liste des persos (proprietes de spersos)
+ */
 public class TwdCheckPersoInsigneMain {
 
-	
+	// TODO Externaliser les persos dans un fichier csv
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		checkInsignes(Constants.loadInsignes()); 

@@ -57,7 +57,7 @@ public class CalculateurEquipe {
 			
 			for (Insigne insigne : insignes) {
 				Equipement eq = persoAEquiper.equipement;
-				if (eq.isEquipable(insigne, emplacement)) {
+				if (eq.isEquipable(insigne, emplacement, eq.getPerso().getProfil())) {
 //					System.out.println(String.format("%s - E%s - I%s", persoAEquiper.nom, emplacement, insigne.csvLine));
 					List<Perso> tmp = clone(persos);
 					tmp.get(numPerso).equipement.equipe(insigne);

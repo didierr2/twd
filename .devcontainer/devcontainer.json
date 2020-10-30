@@ -28,7 +28,8 @@
 		"vscjava.vscode-maven",
 		"alphabotsec.vscode-eclipse-keybindings",
 		"vscjava.vscode-java-debug",
-		"gabrielbb.vscode-lombok"
+		"gabrielbb.vscode-lombok",
+		"ms-vsliveshare.vsliveshare"		
 	],
 
 	"containerEnv": { 

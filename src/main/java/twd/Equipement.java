@@ -13,7 +13,7 @@ public class Equipement implements Serializable {
 	public final static int NB_MAX_EFFET = 3;
 	public final static int SET_BONUS_NUMBER = 4;
 	public final static double SET_BONUS_VALUE = 1.2;
-	public final static int NB_MAX_OR_PAR_PERSO = 5;
+	public final static int NB_MAX_OR_PAR_PERSO = 6;
 	
 	double totalAttaque = 0;
 	double totalDefense = 0;
@@ -39,12 +39,17 @@ public class Equipement implements Serializable {
 		insignes.remove(insigne.emplacement, insigne);
 	}
 	
+	/**
+	 * Calcul le total de points d'un équipement donné
+	 * @return
+	 */
 	public int total() {
 		totalAttaque = perso.attaque;
 		totalDefense = perso.defense;
-		totalRd = 4000;
-		totalCc = 1500;
-		totalDc = 3000;
+		totalRd = perso.defense;
+		totalCc = perso.attaque;
+		totalDc = perso.attaque;
+		Profil profil = perso.getProfil();
 		
 		for (Insigne insigne : insignes.values()) {
 			switch (insigne.effet) {
@@ -67,10 +72,9 @@ public class Equipement implements Serializable {
 				throw new IllegalStateException("L'effet de l'insigne n'est pas reconnu : " + insigne);
 			}
 		}
-		return (int)((totalAttaque * PONDERATION_ATTAQUE_DEFENSE) + totalDefense + totalRd + totalDc + totalCc);
+		return (int)((totalAttaque * profil.pdegats) + (totalDefense * profil.psante) + (totalRd * profil.prd) + (totalDc * profil.pdc) + (totalCc * profil.pcc));
 	}
 
-	
 	/**
 	 * Ajoute l'effet et l'extra effet
 	 */
@@ -112,7 +116,7 @@ public class Equipement implements Serializable {
 	}
 
 
-	public boolean isEquipable(Insigne insigne, int emplacement) {
+	public boolean isEquipable(Insigne insigne, int emplacement, Profil profil) {
 		
 		// On compte le max d'insignes et le nombre d'insignes or
 		int nbOr = 0;
@@ -131,6 +135,7 @@ public class Equipement implements Serializable {
 		}
 		
 		return !insigne.equipe 
+				&& profil.accept(insigne)
 				&& insigne.emplacement == emplacement
 				&& nbEffet < NB_MAX_EFFET
 				&& nbOr <= NB_MAX_OR_PAR_PERSO;

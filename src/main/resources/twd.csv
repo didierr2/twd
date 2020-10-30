@@ -11,9 +11,9 @@
 11;Sante;985;5;6;A;Guerrier;246
 12;Degats;534;5;5;B;Cogneur;134
 13;Degats critiques;654;5;3;C;Gabriel;164
-14;Reduction degats;0,17;5;3;A;Guerrier;0,04
+14;Reduction degats;0,17;5;6;A;Guerrier;0,04
 15;Reduction degats;0,19;5;2;E;;
-16;Reduction degats;0,19;5;1;B;;
+16;Reduction degats;0,19;5;4;B;;
 17;Sante;0,2;5;1;C;;
 18;Degats;0,17;5;6;E;Abraham;0,04
 19;Degats;0,17;5;3;C;Guerrier;0,04
@@ -23,9 +23,9 @@
 23;Degats;0,14;4;3;D;;
 24;Degats Critiques;601;4;2;A;;
 25;Degats;0,14;4;5;A;;
-26;Reduction degats;0,13;4;5;C;Guerrier;0,03
-27;Reduction degats;0,13;4;3;D;Chasseur;0,03
-28;Reduction degats;0,13;4;5;B;Eclaireur;0,03
+26;Reduction degats;0,13;4;2;C;Guerrier;0,03
+27;Reduction degats;0,13;4;6;D;Chasseur;0,03
+28;Reduction degats;0,13;4;4;B;Eclaireur;0,03
 29;Degats;411;4;4;A;Negan;103
 30;Sante;0,16;4;1;E;;
 31;Sante;0,15;4;3;A;Merle;0,04
@@ -33,7 +33,7 @@
 33;Degats;0,12;4;4;B;Soldat;0,03
 34;Sante;636;4;6;D;Guerrier;159
 35;Sante;0,14;4;4;A;Guerrier;0,04
-36;Degats Critiques;0,15;4;4;C;Soldat;0,04
+36;Degats Critiques;0,15;4;1;C;Soldat;0,04
 37;Coups Critiques;0,11;4;6;C;Impitoyable;0,03
 38;Coups Critiques;0,14;4;1;B;Tireur;0,04
 39;Degats Critiques;0,17;4;3;B;Soldat;0,04
@@ -77,17 +77,25 @@
 77;Degats;0,08;3;3;D;Gouverneur;0,02
 78;Degats;0,08;3;5;E;ezekiel;0,02
 79;Degats Critiques;0,11;3;2;D;esquive;0,03
-80;Degats Critiques;0,05;1;2;C;chasseur;0,01
-81;Coups Critiques;0,03;1;5;D;;
-82;Sante;300;2;6;E;cogneur;75
-83;Degats;149;2;2;C;;
-84;Degats;0,06;2;5;C;tireur;0,02
-85;Sante;0,24;5;2;B;;
-86;Degats;212;3;5;C;glenn;53
-87;Degats Critiques;0,15;4;6;C;guerrier;0,04
-88;Degats;0,17;5;4;D;Chasseur;0,04
-89;Degats;0,18;5;6;C;;
-90;Degats Critiques;0,17;4;2;A;gabriel;0,04
-91;Sante;0,14;4;1;E;carl;0,04
-92;Sante;0,16;4;5;C;;
-
+80;Reduction degats;0,09;3;5;C;carl;0,02
+81;Sante;0,24;5;2;B;;
+82;Degats;212;3;5;C;glenn;53
+83;Degats Critiques;0,15;4;3;C;guerrier;0,04
+84;Degats;0,17;5;4;D;Chasseur;0,04
+85;Degats;0,18;5;6;C;;
+86;Degats Critiques;0,17;4;3;A;gabriel;0,04
+87;Sante;0,14;4;1;E;carl;0,04
+88;Sante;0,16;4;5;C;;
+89;Degats Critiques;0,2;5;5;E;Chasseur;0,05
+90;Reduction degats;0,19;5;6;C;entre les balles;0,05
+91;Sante;0,11;3;1;D;tireur;0,03
+92;Sante;0,21;5;5;A;Impitoyable;0,05
+93;Degats Critiques;0,2;5;1;C;cogneur;0,05
+94;Degats;0,15;5;4;E;eclaireur;0,04
+95;Degats;0,12;4;4;E;tireur;0,03
+96;Degats Critiques;0,13;3;3;D;;
+97;Degats Critiques;0,12;3;6;C;vigilant;0,03
+98;Degats;0,14;4;5;A;;
+99;Degats;0,16;5;6;B;impitoyable;0,04
+100;Degats;0,13;4;6;A;;
+101;Degats;0,19;5;5;C;;

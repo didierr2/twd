@@ -15,13 +15,15 @@ public class Perso implements Serializable {
 	public int attaque;
 	public int defense;
 	public List<String> equipiers = new ArrayList<>();
+	public Profil profil;
 
 	public Equipement equipement;
 	
-	public Perso(String nom, int attaque, int defense, String... equipiers) {
+	public Perso(String nom, int attaque, int defense, Profil profil, String... equipiers) {
 		this.nom = nom.toLowerCase();
 		this.attaque = attaque;
 		this.defense = defense;
+		this.profil = profil;
 		for (String eq : equipiers) {
 			this.equipiers.add(eq.toLowerCase());
 		}

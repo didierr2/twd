@@ -16,14 +16,15 @@ public class Constants {
 	public static final String TWD_CSV_FILE_PATH = getEnvOrElse("WS_FOLDER", "/src/main/resources/twd.csv", "C:\\Users\\Didier\\eclipse-workspace\\ws_2020-03\\demo\\src\\main\\resources\\twd.csv");
 
 	public static List<Perso> persos = Arrays.asList(
-			new Perso("Michonne", 6571, 7371, "Abraham", "Daryl", "Daryl eclaireur", "Soldat", "Chasseur", "Eclaireur", "esquive", "riposte", "brutalite", "enchainement"),
-			new Perso("Abraham", 4546, 7122, "Michonne", "Daryl", "Rick", "Tara", "Guerrier", "Chasseur", "Tireur", "Adresse au tir", "Vengeance", "Position Defensive", "Vigilant"),
-			new Perso("Daryl", 5985, 6472, "Michonne", "Abraham", "Daryl eclaireur", "Soldat", "Guerrier", "Chasseur", "Tireur", "adresse au tir", "riposte", "impitoyable", "position defensive"),
-			new Perso("Daryl eclaireur", 6739, 7343, "Michonne", "Daryl", "Guerrier", "Chasseur", "peau dure", "impitoyable", "riposte", "chanceux"),
-			new Perso("Rick", 8029, 5510, "Abraham", "Daryl", "Tara", "Soldat", "Chasseur", "Tireur", "vengeance", "adresse au tir", "chanceux", "riposte"),
-			new Perso("Tara", 6188, 6006, "Rick", "Abraham", "Guerrier", "Tireur", "adresse au tir", "vigilant", "position defensive", "chanceux"),
-			new Perso("Carl", 5650, 4259, "Rick", "Abraham", "Guerrier", "Tireur", "adresse au tir", "chanceux", "tir infaillible", "vengeance"),
-			new Perso("Glenn cogneur", 5257, 8626, "Michonne", "Daryl", "Daryl eclaireur", "Guerrier", "Chasseur", "eclaireur", "brutalite", "riposte", "peau dure")
+			new Perso("Glenn cogneur", 5257, 8626, Profil.DEFENSEUR, "Michonne", "Daryl", "Daryl eclaireur", "Guerrier", "Chasseur", "eclaireur", "brutalite", "riposte", "peau dure"),
+			new Perso("Daryl eclaireur", 6739, 7343, Profil.ATTAQUANT, "Michonne", "Daryl", "Guerrier", "Chasseur", "peau dure", "impitoyable", "riposte", "chanceux"),
+			new Perso("Daryl", 5985, 6472, Profil.ATTAQUANT, "Michonne", "Abraham", "Daryl eclaireur", "Soldat", "Guerrier", "Chasseur", "Tireur", "adresse au tir", "riposte", "impitoyable", "position defensive"),
+			new Perso("Michonne", 6571, 7371, Profil.EQUILIBRE_ATTAQUE, "Abraham", "Daryl", "Daryl eclaireur", "Soldat", "Chasseur", "Eclaireur", "esquive", "riposte", "brutalite", "enchainement"),
+			new Perso("Negan", 5257, 8626, Profil.DEFENSEUR, "Michonne", "Daryl", "Daryl eclaireur", "Glenn cogneur", "Cogneur", "Guerrier", "Chasseur", "eclaireur", "brutalite", "riposte", "peau dure", "frappe puissante"),
+			new Perso("Rick", 8029, 5510, Profil.EQUILIBRE, "Abraham", "Daryl", "Tara", "Soldat", "Chasseur", "Tireur", "vengeance", "adresse au tir", "chanceux", "riposte"),
+			new Perso("Abraham", 4546, 7122, Profil.EQUILIBRE, "Michonne", "Daryl", "Rick", "Tara", "Guerrier", "Chasseur", "Tireur", "Adresse au tir", "Vengeance", "Position Defensive", "Vigilant"),
+			new Perso("Tara", 6188, 6006, Profil.EQUILIBRE, "Rick", "Abraham", "Guerrier", "Tireur", "adresse au tir", "vigilant", "position defensive", "chanceux"),
+			new Perso("Carl", 5650, 4259, Profil.EQUILIBRE, "Rick", "Abraham", "Guerrier", "Tireur", "adresse au tir", "chanceux", "tir infaillible", "vengeance")
 		);
 
 	public static Set<String> attributs = new HashSet<String>(
@@ -66,6 +67,7 @@ public class Constants {
 			"morgan",
 			"negan",
 			"glenn",
+			"glenn cogneur",
 			"ezekiel",
 			"gouverneur",
 			"maggie",
