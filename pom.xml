@@ -9,14 +9,15 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>fr.bbq</groupId>
-	<artifactId>banque</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>banque</name>
-	<description>Demo project for Spring Boot</description>
+	<groupId>fr.twd</groupId>
+	<artifactId>survival-advices</artifactId>
+	<version>0.0.1</version>
+	<name>twd</name>
+	<description>Recommandations pour les survivants de TWD - No man's land</description>
 
 	<properties>
 		<java.version>11</java.version>
+    	<!-- <start-class>twd.conseil.TwdAdvicesMain</start-class> -->
 	</properties>
 
 	<dependencies>
@@ -97,5 +98,31 @@
 	<!-- </plugin> -->
 	<!-- </plugins> -->
 	<!-- </build> -->
+
+	<build>
+		<plugins>
+			<!--<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>twd.conseil.TwdAdvicesMain</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.0.1.RELEASE</version>
+				<configuration>
+					<mainClass>twd.conseil.TwdAdvicesMain</mainClass>
+					<layout>ZIP</layout>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 
 </project>
