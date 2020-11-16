@@ -34,7 +34,7 @@
 
 	"containerEnv": { 
 		"WS_FOLDER": "${containerWorkspaceFolder}"
-	 }
+	 },
 
 	// Montage workspace par defaut
 	//"workspaceMount": "source=${localWorkspaceFolder}/sub-folder,target=/workspace,type=bind,consistency=cached"
@@ -43,7 +43,8 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "java -version",
+	"postCreateCommand": ["git config --global user.name 'didierr2'", "git config --global user.email 'didierr2@gmail.com'"]
+	 
 
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	//"remoteUser": "vscode"

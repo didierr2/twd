@@ -1,0 +1,44 @@
+Objectifs du programme
+----------------------
+Ce programme a pour objectif de vous aider à optimiser votre équipe de survivants que ce soit pour les défis les guild wars ou tout autre combat.
+Il donne des conseils sur les insignes, les niveaux de l'équipement et les attributs de vos survivants.
+Ces conseils sont ceux du canal "le-guide-du-nouveau-survivant" de discord ainsi que ceux du champion JayZ : https://forums.nextgames.com/walkingdead/discussion/41787/jayzs-nml-strategy-compendium/p1
+
+
+Prerequis 
+---------
+Le programme nécessite d'être sous windows (me contacter pour une version linux)
+et de disposer d'excel pour ouvrir le fichier des survivants.
+
+
+Utilisation
+-----------
+Le principe est le suivant : 
+1) je complete un fichier excel pour décrire les survivants de mon équipe
+  Le fichier excel a compléter est survivants.xlsx.
+  Il faut compléter le premier obglet nommé 'Survivants'
+  Un exemple est donné dans le second onglet nommé 'Exemple'
+  Il n'est pas nécessaire de compléter avec tous les survivants que l'on possède.
+  Il est fortement recommandé d'y mettre : 
+    - les survivants les plus utilisés
+    - les survivants ayant le plus détoiles roses
+    - les survivants de plus haut level
+    - les survivants ayant les équipements de plus haut level
+2) je lance le programme
+  Pour cela il suffit de lancer le fichier strat.bat.
+  Le programme indique succintement ce qu'il fait:
+  > Ouverture du fichier : survivants.xlsx
+  > 5 survivants chargés : Rick, Daryl, Daryl S, Glenn S, Michonne
+  > La description des règles est dans le fichier : regles.txt
+  > Les recommandations sont dans le fichier : conseils.txt
+3) Je consulte les recommandations
+  Les recommandations sont dans le fichier conseils.txt.
+  Pour chaque conseil, il y a deux niveaux de recommandations : 
+    - "Problème" : le conseil n'est pas suivi. Ce sont les recommandations en suivre en priorité.
+    - "Amélioration" : le conseil est relativement bien suivi, cependant il est encore possible de s'améliorer
+  Pour mieux comprendre les conseils, l'explication de chacun d'eux est décrit dans le fichiers regles.txt.
+
+
+En cas de probleme
+------------------
+Ne pas hésiter à me contacter sur discord : didierr2
