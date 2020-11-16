@@ -20,8 +20,8 @@ public enum Trait {
     VIGILANT ("vigilant", "vigilant"),
     PUNITION ("punition", "punish"),
     IMPITOYABLE ("impitoyable", "ruthless"),
+    VISEE_CRITIQUE ("visee critique", "critical aim"),
     AUTRE ("autre", "other");
-    // critical aim
 
     static Map<String, Trait> traits = new HashMap<>();
     static {

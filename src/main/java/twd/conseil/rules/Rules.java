@@ -11,12 +11,18 @@ public class Rules {
 			
 	// Liste de toutes les regles a appliquer pour l'equipe
 	public static final List<TeamRule> teamRules = Arrays.asList(
-		new RuleGWLevel()
+		new RuleGWLevel(),
+		new RuleDefiLevel()
 	);
 
 	// Liste de toutes les regles a appliquer pour chaque survivant
 	public static final List<SurvivorRule> survivorRules = Arrays.asList(
-		new RuleChasseur()
+        new RuleHunter(),
+        new RuleBruiser(),
+        new RuleAssault(),
+        new RuleWarrior(),
+        new RuleScout(),
+        new RuleShooter()
 	);
 
     public static StringBuilder processRules(List<Survivor> survivors) {

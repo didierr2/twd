@@ -9,7 +9,7 @@ public enum SurvivorClass {
     TIREUR ("tireur", "shooter"),
     SOLDAT ("soldat", "assault"),
     COGNEUR ("cogneur", "bruiser"),
-    GUERRIER ("tirguerrier", "warrior"),
+    GUERRIER ("guerrier", "warrior"),
     ECLAIREUR ("eclaireur", "scout"),
     AUTRE ("autre", "");
 
