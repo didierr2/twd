@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.commons.collections4.list.TreeList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
@@ -26,9 +28,21 @@ public class TwdAdvicesMain extends AbstractWorkbookHandler {
 	static List<Survivor> survivors = null;
 	final static String FILE_ADVICES = "conseils.txt";
 	final static String FILE_RULES = "regles.txt";
-
+	final static Logger log = LogManager.getLogger();
+	
 	public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
-		
+		try {
+			startTwd(args);
+		}
+		catch (Throwable t) {
+			log.error("Erreur remontée au main", t);
+			System.out.println("ERREUR> Une erreur est survenue. Il faut envoyer le fichier " + args[0] + " et le fichier twd.log a didierr2 sur discord. Merci.");
+		}
+
+	}
+
+	public static void startTwd(String[] args) throws FileNotFoundException, IOException, InterruptedException {
+
 		// Check args
 		if (args.length == 0 || args[0] == null) {
 			System.err.println("Parametre d'execution manquant.");
@@ -36,12 +50,15 @@ public class TwdAdvicesMain extends AbstractWorkbookHandler {
 		}
 		
 		// On charge les survivants depuis la feuille excel
+		log.info("*** Chargement des survivants");
 		new TwdAdvicesMain().loadSurvivalists(args[0]);
 
 		// Charge toutes les regles
+		log.info("*** Execution des regles");
 		StringBuilder diagnostic = Rules.processRules(survivors);
 
 		// Ecrit les règles dans un fichier
+		log.info("*** Ecrit le fichier de description");
 		boolean first = true;
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_RULES))) {
 			for (TeamRule rule : Rules.teamRules) {
@@ -50,27 +67,26 @@ public class TwdAdvicesMain extends AbstractWorkbookHandler {
 				} else {
 					writer.write("\n\n");
 				}
+				log.debug("- [TEAM_RULE] " + rule.getClass().getSimpleName());
 				writer.write("[" + rule.getClass().getSimpleName() + "]");
 				writer.write("\n" + rule.description());
 			}
 			for (SurvivorRule rule : Rules.survivorRules) {
+				log.debug("- [SURVIVOR_RULE] " + rule.getClass().getSimpleName());
 				writer.write("\n\n[" + rule.getClass().getSimpleName() + "]");
 				writer.write("\n" + rule.description());
 			}    
+			log.info("La description des règles est dans le fichier : " + FILE_RULES);
 			System.out.println("La description des règles est dans le fichier : " + FILE_RULES);
 		} 
-		catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		// Ecrit le diagnostic dans un fichier
+		log.info("*** Ecrit le fichier de recommandations");
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_ADVICES))) {
 			writer.write(diagnostic.toString());
+			log.info("Les recommandations sont dans le fichier : " + FILE_ADVICES);
 			System.out.println("Les recommandations sont dans le fichier : " + FILE_ADVICES);
 		} 
-		catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 
@@ -95,7 +111,7 @@ public class TwdAdvicesMain extends AbstractWorkbookHandler {
 			survivors.add(loadSurvivor(data, iRaw));
 			iRaw++;
 		}
-
+		log.info(String.format("%s survivants chargés : %s ", survivors.size(), toStringSurvivants(survivors)));
 		System.out.println(String.format("%s survivants chargés : %s ", survivors.size(), toStringSurvivants(survivors)));
 	}
 

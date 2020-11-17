@@ -1,5 +1,8 @@
 package twd.conseil.rules;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import twd.conseil.Survivor;
 import twd.conseil.constant.RuleStatus;
 import twd.conseil.constant.SurvivorClass;
@@ -9,6 +12,7 @@ public class RuleScout implements SurvivorRule {
 	RuleScoutCriticalDamage ruleDamage = new RuleScoutCriticalDamage();
 	RuleScoutThreatReduction ruleThreat = new RuleScoutThreatReduction();
 	int damageVsThreat = 0;
+	final static Logger log = LogManager.getLogger();
 
 	@Override
 	public boolean isElligible(Survivor survivor) {
@@ -41,7 +45,10 @@ public class RuleScout implements SurvivorRule {
 	public void processRule(Survivor survivor) {
 		ruleDamage.processRule(survivor);
 		ruleThreat.processRule(survivor);
-		damageVsThreat = negativePoints(ruleDamage) - negativePoints(ruleThreat);
+		int pDammage = negativePoints(ruleDamage);
+		int pThreat = negativePoints(ruleThreat);
+		damageVsThreat = pDammage - pThreat;
+		log.debug(String.format("    scout : damage = %s, threat=%s", pDammage, pThreat));
 	}
    
 	private int negativePoints(AbstractSurvirvorClassRule rule) {

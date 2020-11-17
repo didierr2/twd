@@ -3,12 +3,17 @@ package twd.conseil.rules;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import twd.conseil.constant.RuleStatus;
 import twd.conseil.Survivor;
 
 public class Rules {
     
-			
+    // Logger
+    final static Logger log = LogManager.getLogger();
+    
 	// Liste de toutes les regles a appliquer pour l'equipe
 	public static final List<TeamRule> teamRules = Arrays.asList(
 		new RuleGWLevel(),
@@ -30,24 +35,30 @@ public class Rules {
 
         // Process team rules
         for (TeamRule rule : teamRules) {
+            log.debug("- [TEAM " + rule.getClass().getSimpleName() + "] process");
             rule.processRule(survivors);
             sb.append(rule.getRuleTitle());
+            log.debug("- [TEAM " + rule.getClass().getSimpleName() + "] recommandation - " + rule.statut().name());
             logRuleDiagnostic(sb, rule);
             sb.append("\n");
         }
         sb.append("\n");
         
-        // Process survivalits rules
+        // Process survivalist rules
         for (Survivor survivor : survivors) {
             boolean survivorOk = true;
             sb.append(survivor.getName() + " : ");
+            log.debug("- [" +  survivor.getName().toUpperCase() + "]");
             for (SurvivorRule rule : survivorRules) {
                 if (rule.isElligible(survivor)) {
+                    log.debug("  * [SURVIVOR " + rule.getClass().getSimpleName() + "] process");
                     rule.processRule(survivor);
+                    log.debug("  * [SURVIVOR " + rule.getClass().getSimpleName() + "] recommandation - " + rule.statut().name());
                     logRuleDiagnostic(sb, rule);
                     survivorOk = survivorOk && rule.statut().equals(RuleStatus.ACHIEVED);
                 }
             }    
+            log.debug("- [" +  survivor.getName().toUpperCase() + "] status : " + (survivorOk ? "OK" : "KO"));
             if (survivorOk) {
                 sb.append("OK");
             }
@@ -68,7 +79,4 @@ public class Rules {
         break;
      }
     }
-
-
-
 }
