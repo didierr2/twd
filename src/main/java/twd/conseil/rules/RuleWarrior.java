@@ -11,8 +11,8 @@ public class RuleWarrior implements SurvivorRule {
 
 	RuleWarriorCriticalDamage ruleDamage = new RuleWarriorCriticalDamage();
 	RuleWarriorBalanced ruleBalanced = new RuleWarriorBalanced();
-	int damageVsBalanced = 0;
-	final static Logger log = LogManager.getLogger();
+	boolean profilDamage = true;
+	final static Logger log = LogManager.getLogger(RuleWarrior.class);
 
 	@Override
 	public boolean isElligible(Survivor survivor) {
@@ -21,7 +21,7 @@ public class RuleWarrior implements SurvivorRule {
 
 	@Override
 	public RuleStatus statut() {
-		return damageVsBalanced > 0 ? ruleDamage.statut() : ruleBalanced.statut();
+		return profilDamage ? ruleDamage.statut() : ruleBalanced.statut();
 	}	
 
 	@Override
@@ -36,8 +36,8 @@ public class RuleWarrior implements SurvivorRule {
 
 	@Override
 	public String recommandation() {
-		String reco = "Ce guerrier a un profil " + (damageVsBalanced >= 0 ? "dommages critiques" : "équilibré") + " : ";
-		reco += (damageVsBalanced >= 0 ? ruleDamage.recommandation() : ruleBalanced.recommandation());
+		String reco = "Ce guerrier a un profil " + (profilDamage ? "dommages critiques" : "équilibré") + " : ";
+		reco += (profilDamage ? ruleDamage.recommandation() : ruleBalanced.recommandation());
 		return reco;
 	}
 
@@ -45,10 +45,10 @@ public class RuleWarrior implements SurvivorRule {
 	public void processRule(Survivor survivor) {
 		ruleDamage.processRule(survivor);
 		ruleBalanced.processRule(survivor);
-		int pDammage = negativePoints(ruleDamage);
-		int pBalanced = negativePoints(ruleBalanced);
-		damageVsBalanced = pDammage - pBalanced;
-		log.debug(String.format("    warrior : damage = %s, balanced=%s", pDammage, pBalanced));
+		int ecartDamage = negativePoints(ruleDamage);
+		int ecartBalanced = negativePoints(ruleBalanced);
+		profilDamage = ecartDamage < ecartBalanced;
+		log.debug(String.format("    warrior : damage = %s, balanced=%s", ecartDamage, ecartBalanced));
 
 
 	}

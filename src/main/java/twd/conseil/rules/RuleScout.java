@@ -11,8 +11,8 @@ public class RuleScout implements SurvivorRule {
 
 	RuleScoutCriticalDamage ruleDamage = new RuleScoutCriticalDamage();
 	RuleScoutThreatReduction ruleThreat = new RuleScoutThreatReduction();
-	int damageVsThreat = 0;
-	final static Logger log = LogManager.getLogger();
+	boolean profilDamage = true;
+	final static Logger log = LogManager.getLogger(RuleScout.class);
 
 	@Override
 	public boolean isElligible(Survivor survivor) {
@@ -21,7 +21,7 @@ public class RuleScout implements SurvivorRule {
 
 	@Override
 	public RuleStatus statut() {
-		return damageVsThreat > 0 ? ruleDamage.statut() : ruleThreat.statut();
+		return profilDamage ? ruleDamage.statut() : ruleThreat.statut();
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class RuleScout implements SurvivorRule {
 
 	@Override
 	public String recommandation() {
-		String reco = "Ce scout a un profil " + (damageVsThreat >= 0 ? "dommages critiques" : "réduction de la menace") + " : ";
-		reco += (damageVsThreat >= 0 ? ruleDamage.recommandation() : ruleThreat.recommandation());
+		String reco = "Ce scout a un profil " + (profilDamage ? "dommages critiques" : "réduction de la menace") + " : ";
+		reco += (profilDamage ? ruleDamage.recommandation() : ruleThreat.recommandation());
 		return reco;
 	}
 
@@ -45,10 +45,10 @@ public class RuleScout implements SurvivorRule {
 	public void processRule(Survivor survivor) {
 		ruleDamage.processRule(survivor);
 		ruleThreat.processRule(survivor);
-		int pDammage = negativePoints(ruleDamage);
-		int pThreat = negativePoints(ruleThreat);
-		damageVsThreat = pDammage - pThreat;
-		log.debug(String.format("    scout : damage = %s, threat=%s", pDammage, pThreat));
+		int ecartDamage = negativePoints(ruleDamage);
+		int ecartThreat = negativePoints(ruleThreat);
+		profilDamage = ecartDamage < ecartThreat;
+		log.debug(String.format("    scout : damage = %s, threat=%s", ecartDamage, ecartThreat));
 	}
    
 	private int negativePoints(AbstractSurvirvorClassRule rule) {

@@ -3,6 +3,10 @@ package twd.conseil.rules;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.TreeMap;
 
 import static twd.conseil.util.StringUtils.toStringSurvivants;
@@ -14,6 +18,7 @@ public class RuleGWLevel implements TeamRule {
 
 	TreeMap<Integer, List<Survivor>> mp = new TreeMap<>((k1, k2) -> k2 - k1);
 	int nbSurvivors = 0;
+    final static Logger log = LogManager.getLogger(RuleGWLevel.class);
 
 	@Override
 	public String getRuleTitle() {
@@ -45,7 +50,7 @@ public class RuleGWLevel implements TeamRule {
 			statut = RuleStatus.NOT_REACHED;
 		}
 		else if (nbSurv < 6) {
-			statut = RuleStatus.NOT_REACHED;
+			statut = RuleStatus.TO_IMPROVE;
 		}
 		return statut;
 	}
@@ -68,7 +73,7 @@ public class RuleGWLevel implements TeamRule {
 			reco = String.format("Seulement 1 survivant possède le level max d'équipement (level %s) : %s", maxLevel.getKey(), toStringSurvivants(maxLevel.getValue()));
 		}
 		else {
-			reco = String.format("Seulement %s survivants possèdent le level max d'équipement (level %s) : %s", maxLevel.getKey(), toStringSurvivants(maxLevel.getValue()));
+			reco = String.format("Seulement %s survivants possèdent le level max d'équipement (level %s) : %s", nbSurv, maxLevel.getKey(), toStringSurvivants(maxLevel.getValue()));
 		}
 		return reco;
 	}	

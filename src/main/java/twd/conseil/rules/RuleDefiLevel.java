@@ -45,7 +45,7 @@ public class RuleDefiLevel implements TeamRule {
 			statut = RuleStatus.NOT_REACHED;
 		}
 		else if (nbSurv < 6) {
-			statut = RuleStatus.NOT_REACHED;
+			statut = RuleStatus.TO_IMPROVE;
 		}
 		return statut;
 	}
@@ -68,7 +68,7 @@ public class RuleDefiLevel implements TeamRule {
 			reco = String.format("Seulement 1 survivant possède le level max (level %s) : %s", level.getKey(), toStringSurvivants(level.getValue()));
 		}
 		else {
-			reco = String.format("Seulement %s survivants possèdent le level max (level %s) : %s", level.getKey(), toStringSurvivants(level.getValue()));
+			reco = String.format("Seulement %s survivants possèdent le level max (level %s) : %s", nbSurv, level.getKey(), toStringSurvivants(level.getValue()));
 		}
 		return reco;
 	}	

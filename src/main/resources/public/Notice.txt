@@ -41,4 +41,4 @@ Le principe est le suivant :
 
 En cas de probleme
 ------------------
-Ne pas hésiter à me contacter sur discord : didierr2
+Ne pas hésiter à me contacter sur discord : didierr2 (envoyez moi les fichiers survivants.xlsx et twd.log)

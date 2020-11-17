@@ -37,7 +37,6 @@ public abstract class AbstractSurvirvorClassRule implements SurvivorRule {
 	@Override
 	public void processRule(Survivor survivor) {
 		loadTraits();		
-// System.err.println(getClass().getSimpleName() + "> processRule : " + getClassName() + " - " + survivor.getName());
 
 		aObtenirNb = 0;
 		for (Trait t : mustHave) {
@@ -81,7 +80,7 @@ public abstract class AbstractSurvirvorClassRule implements SurvivorRule {
 		else if (aChangerNb > 0) {
 			status = RuleStatus.TO_IMPROVE;
 		}
-		else if (aObtenirNb > 0) {
+		else if (aObtenirNb > 0 && aOptimiserNb > 0) {
 			status = RuleStatus.TO_IMPROVE;
 		}
 		return status;

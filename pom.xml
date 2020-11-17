@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>fr.twd</groupId>
 	<artifactId>survival-advices</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 	<name>twd</name>
 	<description>Recommandations pour les survivants de TWD - No man's land</description>
 
@@ -121,6 +121,18 @@
 					<layout>ZIP</layout>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Multi-Release>true</Multi-Release>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>			
 		</plugins>
 	</build>
 

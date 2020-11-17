@@ -28,7 +28,7 @@ public class TwdAdvicesMain extends AbstractWorkbookHandler {
 	static List<Survivor> survivors = null;
 	final static String FILE_ADVICES = "conseils.txt";
 	final static String FILE_RULES = "regles.txt";
-	final static Logger log = LogManager.getLogger();
+	final static Logger log = LogManager.getLogger(TwdAdvicesMain.class);
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
 		try {

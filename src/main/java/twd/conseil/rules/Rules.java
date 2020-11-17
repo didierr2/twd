@@ -12,7 +12,7 @@ import twd.conseil.Survivor;
 public class Rules {
     
     // Logger
-    final static Logger log = LogManager.getLogger();
+    final static Logger log = LogManager.getLogger(Rules.class);
     
 	// Liste de toutes les regles a appliquer pour l'equipe
 	public static final List<TeamRule> teamRules = Arrays.asList(
