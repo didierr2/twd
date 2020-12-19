@@ -1,5 +1,7 @@
 package twd.conseil;
 
+import static twd.conseil.util.StringUtils.toStringSurvivants;
+
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -12,15 +14,17 @@ import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import twd.conseil.constant.Constants.ROWS_AND_CELLS;
 import twd.conseil.constant.SurvivorClass;
 import twd.conseil.constant.Trait;
-import twd.conseil.constant.Constants.ROWS_AND_CELLS;
 import twd.conseil.rules.Rules;
 import twd.conseil.rules.SurvivorRule;
 import twd.conseil.rules.TeamRule;
 import twd.conseil.util.CellUtils;
 import twd.conseil.xls.AbstractWorkbookHandler;
-import static twd.conseil.util.StringUtils.toStringSurvivants;
+import twd.conseil.xls.AbstractWorkbookHandler.OPEN_MODE;
+
+
 
 public class TwdAdvicesMain extends AbstractWorkbookHandler {
 
@@ -53,10 +57,6 @@ public class TwdAdvicesMain extends AbstractWorkbookHandler {
 		log.info("*** Chargement des survivants");
 		new TwdAdvicesMain().loadSurvivalists(args[0]);
 
-		// Charge toutes les regles
-		log.info("*** Execution des regles");
-		StringBuilder diagnostic = Rules.processRules(survivors);
-
 		// Ecrit les règles dans un fichier
 		log.info("*** Ecrit le fichier de description");
 		boolean first = true;
@@ -80,13 +80,19 @@ public class TwdAdvicesMain extends AbstractWorkbookHandler {
 			System.out.println("La description des règles est dans le fichier : " + FILE_RULES);
 		} 
 
-		// Ecrit le diagnostic dans un fichier
-		log.info("*** Ecrit le fichier de recommandations");
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_ADVICES))) {
-			writer.write(diagnostic.toString());
-			log.info("Les recommandations sont dans le fichier : " + FILE_ADVICES);
-			System.out.println("Les recommandations sont dans le fichier : " + FILE_ADVICES);
-		} 
+		// Charge toutes les regles
+		if (!survivors.isEmpty()) {
+			log.info("*** Execution des regles");
+			StringBuilder diagnostic = Rules.processRules(survivors);
+
+			// Ecrit le diagnostic dans un fichier
+			log.info("*** Ecrit le fichier de recommandations");
+			try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_ADVICES))) {
+				writer.write(diagnostic.toString());
+				log.info("Les recommandations sont dans le fichier : " + FILE_ADVICES);
+				System.out.println("Les recommandations sont dans le fichier : " + FILE_ADVICES);
+			} 
+		}
 	}
 	
 
@@ -111,8 +117,14 @@ public class TwdAdvicesMain extends AbstractWorkbookHandler {
 			survivors.add(loadSurvivor(data, iRaw));
 			iRaw++;
 		}
-		log.info(String.format("%s survivants chargés : %s ", survivors.size(), toStringSurvivants(survivors)));
-		System.out.println(String.format("%s survivants chargés : %s ", survivors.size(), toStringSurvivants(survivors)));
+		if (survivors.isEmpty()) {
+			log.info("0 survivant chargé --> il faut commencer par compléter le fichier excel");
+			System.out.println("0 survivant chargé --> il faut commencer par compléter le fichier excel");
+		}
+		else {
+			log.info(String.format("%s survivants chargés : %s ", survivors.size(), toStringSurvivants(survivors)));
+			System.out.println(String.format("%s survivants chargés : %s ", survivors.size(), toStringSurvivants(survivors)));
+		}
 	}
 
 	private Survivor loadSurvivor(Sheet data, int rawIndex) {
