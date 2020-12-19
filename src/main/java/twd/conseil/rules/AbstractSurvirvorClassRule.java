@@ -15,10 +15,12 @@ public abstract class AbstractSurvirvorClassRule implements SurvivorRule {
 
 	String aObtenir = "";
 	String aOptimiser = "";
+	String resteAOptimiser = "";
 	String aChanger = "";
 	String aSupprimer = "";
 	int aObtenirNb = 0;
 	int aOptimiserNb = 0;
+	int resteAOptimiserNb = 0;
 	int aChangerNb = 0;
 	int aSupprimerNb = 0;
     
@@ -46,10 +48,15 @@ public abstract class AbstractSurvirvorClassRule implements SurvivorRule {
 			}
 		}
 		aOptimiserNb = 0;
+		resteAOptimiserNb = 0;
 		for (Trait t : niceHave) {
 			if (survivor.getTraits().contains(t)) {
 				aOptimiser += t.getName() + ", ";
 				aOptimiserNb++;
+			}
+			else {
+				resteAOptimiser += t.getName() + ", ";
+				resteAOptimiserNb++;
 			}
 		}			
 		aSupprimerNb = 0;
@@ -125,10 +132,10 @@ public abstract class AbstractSurvirvorClassRule implements SurvivorRule {
 	public String recommandation() {
 		String reco = "Les attributs sont optimum pour le " + getClassName().getName();
 		if (aSupprimerNb > 0) {
-			reco = String.format("Changer %s (peu utile pour un %s) et essayer d'obtenir %s", toStringTraits(aSupprimer, aSupprimerNb), getClassName().getName(), (aObtenirNb > 0 ? toStringTraits(aObtenir, aObtenirNb) : toStringTraits(aOptimiser, aOptimiserNb)));
+			reco = String.format("Changer %s (peu utile pour un %s) et essayer d'obtenir %s", toStringTraits(aSupprimer, aSupprimerNb), getClassName().getName(), (aObtenirNb > 0 ? toStringTraits(aObtenir, aObtenirNb) : toStringTraits(resteAOptimiser, resteAOptimiserNb)));
 		} 
 		else if (aChangerNb > 0) {
-			reco = String.format("Changer %s et essayer d'obtenir %s", toStringTraits(aChanger, aChangerNb), (aObtenirNb > 0 ? toStringTraits(aObtenir, aObtenirNb) : toStringTraits(aOptimiser, aOptimiserNb)));
+			reco = String.format("Changer %s et essayer d'obtenir %s", toStringTraits(aChanger, aChangerNb), (aObtenirNb > 0 ? toStringTraits(aObtenir, aObtenirNb) : toStringTraits(resteAOptimiser, resteAOptimiserNb)));
 		}
 		else if (aObtenirNb > 0 && aOptimiserNb > 0) {
 			reco = String.format("Changer %s et essayer d'obtenir %s", toStringTraits(aOptimiser, aOptimiserNb), toStringTraits(aObtenir, aObtenirNb));
